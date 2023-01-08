@@ -26,7 +26,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/{id}")]
+    [Route("/api/[controller]/{id}")]
     public async Task<IActionResult> Get(Guid id)
     {
         var users = await _userService.GetUsersAsync();

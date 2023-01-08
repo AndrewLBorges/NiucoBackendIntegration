@@ -56,7 +56,7 @@ public class UserService : IUserService
 
     private static string GetObfuscatedEmail(string? email)
     {
-        var emailResult = email;
+        var emailResult = email ?? string.Empty;
         if(!string.IsNullOrEmpty(email))
         {
             var splittedEmail = email.Split('@');
@@ -70,7 +70,7 @@ public class UserService : IUserService
                 emailResult = alias[..2] + asterisks + alias[^2..] + "@" + domain;
             }
         }
-        return emailResult!;
+        return emailResult;
     }
 
     private static string FormatDateFromUnixEpochToISO8601(long unixTime)
