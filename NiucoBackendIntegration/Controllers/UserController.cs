@@ -33,8 +33,12 @@ public class UserController : ControllerBase
         var requestedUser = users.FirstOrDefault(users => users.Id == id);
 
         if (requestedUser is null)
+        {
+            _logger.LogError($"User with Id {id} not found.", requestedUser);
             return NotFound();
+        }
 
+        _logger.LogInformation($"User fetched and being returned. Id: {id}", requestedUser);
         return Ok(requestedUser);
     }
 }
